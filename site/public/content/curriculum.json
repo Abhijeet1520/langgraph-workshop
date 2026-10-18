@@ -1,0 +1,170 @@
+{
+  "repo": "https://github.com/Abhijeet1520/langgraph-workshop",
+  "colabBase": "https://colab.research.google.com/github/Abhijeet1520/langgraph-workshop/blob/main",
+  "levels": [
+    {
+      "id": "level-0-setup",
+      "number": 0,
+      "title": "Setup & Verify",
+      "folder": "docs/levels/level-0-setup",
+      "notebookFolder": "notebooks/level-0-setup",
+      "tagline": "Install the stack and confirm your LLM provider works",
+      "tasks": [
+        {
+          "id": "task0-welcome",
+          "title": "Welcome & Verify",
+          "doc": "docs/levels/level-0-setup/README.md",
+          "notebook": "notebooks/level-0-setup/00_welcome_and_verify.ipynb",
+          "concept": "Install, configure provider, verify connection"
+        }
+      ]
+    },
+    {
+      "id": "level-1-basics",
+      "number": 1,
+      "title": "LangGraph Basics",
+      "folder": "docs/levels/level-1-basics",
+      "notebookFolder": "notebooks/level-1-basics",
+      "tagline": "State, nodes, edges, routing, loops — the core mental model",
+      "tasks": [
+        {
+          "id": "task2",
+          "title": "Sequential vs Stateful",
+          "doc": "docs/levels/level-1-basics/task2-sequential-vs-stateful.md",
+          "concept": "Why graphs beat chains",
+          "notebooks": ["01_introduction.ipynb", "02_simple_graph.ipynb"]
+        },
+        {
+          "id": "task3",
+          "title": "StateGraph",
+          "doc": "docs/levels/level-1-basics/task3-stategraph.md",
+          "concept": "Typed state that persists",
+          "notebooks": ["03_more_on_states.ipynb"]
+        },
+        {
+          "id": "task4",
+          "title": "Nodes",
+          "doc": "docs/levels/level-1-basics/task4-nodes.md",
+          "concept": "Workflow worker functions",
+          "notebooks": ["04_chat_tool_graph.ipynb", "05_basic_agent.ipynb"]
+        },
+        {
+          "id": "task5",
+          "title": "Edges & Routing",
+          "doc": "docs/levels/level-1-basics/task5-edges-routing.md",
+          "concept": "Conditional paths",
+          "notebooks": []
+        },
+        {
+          "id": "task6",
+          "title": "Loops",
+          "doc": "docs/levels/level-1-basics/task6-loops.md",
+          "concept": "Iterative refinement",
+          "notebooks": []
+        },
+        {
+          "id": "task1-extra",
+          "title": "Deep dives (optional)",
+          "doc": null,
+          "concept": "Checkpointing, controllability, messages, streaming",
+          "notebooks": [
+            "06_agent_memory_checkpointing.ipynb",
+            "07_controllability_breakpoints_timetravel.ipynb",
+            "08_parallelization_subgraph.ipynb",
+            "09_more_on_messages.ipynb",
+            "10_chatbot_summarization_stream.ipynb"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "level-2-tools-memory-capstone",
+      "number": 2,
+      "title": "Tools, Memory & Capstone",
+      "folder": "docs/levels/level-2-tools-memory-capstone",
+      "notebookFolder": "notebooks/level-2-tools-memory-capstone",
+      "tagline": "Web search tools, persistent memory, and the research assistant",
+      "tasks": [
+        {
+          "id": "task7",
+          "title": "Tools",
+          "doc": "docs/levels/level-2-tools-memory-capstone/task7-tools.md",
+          "concept": "DuckDuckGo search, function calling",
+          "notebooks": []
+        },
+        {
+          "id": "task8",
+          "title": "Memory",
+          "doc": "docs/levels/level-2-tools-memory-capstone/task8-memory.md",
+          "concept": "Checkpointing across turns",
+          "notebooks": ["12_memory.ipynb", "13_memory_profile_collection.ipynb"]
+        },
+        {
+          "id": "task9",
+          "title": "Research Assistant Capstone",
+          "doc": "docs/levels/level-2-tools-memory-capstone/task9-research-assistant.md",
+          "concept": "Everything combined",
+          "notebooks": ["11_research_assistant.ipynb", "14_chatbot_agent.ipynb"]
+        }
+      ]
+    },
+    {
+      "id": "level-3-email-agent",
+      "number": 3,
+      "title": "Email Automation Agent",
+      "folder": "docs/levels/level-3-email-agent",
+      "notebookFolder": "notebooks/level-3-email-agent",
+      "tagline": "The applied project — classify spam, draft replies",
+      "tasks": [
+        {
+          "id": "task-email-graph",
+          "title": "The Email Graph",
+          "doc": "docs/levels/level-3-email-agent/README.md",
+          "concept": "EmailState, classify, route, draft",
+          "notebooks": ["30_email_agent_graph.ipynb"]
+        },
+        {
+          "id": "task-email-observability",
+          "title": "Observability & Eval (optional advanced)",
+          "doc": "docs/levels/level-3-email-agent/README.md",
+          "concept": "Langfuse tracing, LLM-as-judge, datasets",
+          "notebooks": ["31_email_agent_observability.ipynb"]
+        }
+      ]
+    },
+    {
+      "id": "level-4-real-inbox",
+      "number": 4,
+      "title": "Your Real Inbox",
+      "folder": "docs/levels/level-4-real-inbox",
+      "notebookFolder": "notebooks/level-4-real-inbox",
+      "tagline": "Run the agent on your real mail — read-only, draft-only",
+      "tasks": [
+        {
+          "id": "task-connect-email",
+          "title": "Connect Your Inbox",
+          "doc": "docs/levels/level-4-real-inbox/connect-your-email.md",
+          "concept": "IMAP, app passwords, EmailState mapping",
+          "notebooks": ["40_connect_your_inbox.ipynb"]
+        }
+      ]
+    },
+    {
+      "id": "level-5-next-steps",
+      "number": 5,
+      "title": "What's Next",
+      "folder": "docs/levels/level-5-next-steps",
+      "notebookFolder": null,
+      "tagline": "What else can you automate?",
+      "slides": true,
+      "tasks": [
+        {
+          "id": "task-what-next",
+          "title": "What Else Can You Automate?",
+          "doc": "docs/levels/level-5-next-steps/what-next.md",
+          "concept": "Patterns → recipes, first solo automation"
+        }
+      ]
+    }
+  ]
+}
