@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task9-research-assistant.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task9-research-assistant.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 9 - Build Your Research Assistant 🤖
 
 > **Goal:** Combine everything - StateGraph, nodes, edges, routing, loops, tools, and memory - into a complete AI Research Assistant.

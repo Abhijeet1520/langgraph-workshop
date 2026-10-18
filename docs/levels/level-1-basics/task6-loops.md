@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task6-loops.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task6-loops.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 6 - Loops & Iterations: Refining Your Research
 
 > **Goal:** Make a graph loop back on itself - refining search results until quality is good enough or a max-iteration safety limit kicks in.

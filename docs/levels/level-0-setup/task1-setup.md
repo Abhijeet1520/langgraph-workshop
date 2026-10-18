@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task1-setup.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task1-setup.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 1 - Setup: Install the LangGraph Ecosystem
 
 > **Goal:** Get a working Python environment with LangGraph, LangChain, an LLM provider, and search tooling installed.

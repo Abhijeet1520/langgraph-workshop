@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task8-memory.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task8-memory.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 8 - Memory & State: Building Knowledge
 
 > **Goal:** Treat state as long-term memory - each node reads the accumulated knowledge of all previous nodes and adds its own contribution.

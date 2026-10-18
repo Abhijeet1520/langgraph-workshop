@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task7-tools.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task7-tools.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 7 - Tool Integration: Adding Search Capabilities
 
 > **Goal:** Turn external services into nodes. Here: wire DuckDuckGo web search into a LangGraph workflow - no API key needed.

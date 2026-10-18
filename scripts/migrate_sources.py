@@ -46,12 +46,10 @@ def md_header(src_rel: str, src_repo: str, src_url: str) -> str:
 
 def copy_doc(src: Path, dest: Path, src_repo: str, repo_url: str, src_rel: str) -> None:
     dest.parent.mkdir(parents=True, exist_ok=True)
-    text = src.read_text(encoding="utf-8")
-    header = md_header(src_rel, src_repo, f"{repo_url}/blob/main/{src_rel}")
-    dest.write_text(header + text, encoding="utf-8")
+    shutil.copyfile(src, dest)
     rel_out = dest.relative_to(REPO).as_posix()
     PROVENANCE_ROWS.append(
-        f"| `{rel_out}` | doc | `{src_repo}` | [`{src_rel}`]({repo_url}/blob/main/{src_rel}) | verbatim + header |"
+        f"| `{rel_out}` | doc | `{src_repo}` | [`{src_rel}`]({repo_url}/blob/main/{src_rel}) | verbatim |"
     )
 
 
@@ -61,8 +59,6 @@ def nb_header_md(dest_rel: str, level: str, title: str, src_repo: str, src_url: 
         f"{badge}\n\n"
         f"# {title}\n\n"
         f"**Level {level}** · Part of the [LangGraph Workshop]({SITE}).\n\n"
-        f"> **Source:** migrated from `{src_repo}` ([original]({src_url})) — "
-        f"see [PROVENANCE.md](https://github.com/Abhijeet1520/langgraph-workshop/blob/main/docs/PROVENANCE.md).\n\n"
         f"**Provider setup:** set `OPENAI_API_KEY` / `OPENAI_API_BASE` / `OPENAI_MODEL` first — "
         f"[docs/setup/providers.md]({SITE}/blob/main/docs/setup/providers.md). "
         f"The first cells install requirements and verify the connection."
@@ -148,6 +144,28 @@ llm = make_llm()
 resp = llm.invoke("Say OK")
 print("✅ LLM reachable:", resp.content[:60])
 '''
+
+
+def workshop_env_cell() -> dict:
+    """The provider-config cell every workshop notebook gets."""
+    return {
+        "cell_type": "code",
+        "metadata": {},
+        "execution_count": None,
+        "outputs": [],
+        "source": MAKE_LLM_ENV,
+    }
+
+
+def make_llm_helper_cell() -> dict:
+    """The make_llm() factory + 1-token connection check cell."""
+    return {
+        "cell_type": "code",
+        "metadata": {},
+        "execution_count": None,
+        "outputs": [],
+        "source": MAKE_LLM_HELPER,
+    }
 
 
 def normalize_llm(nb: dict) -> dict:
@@ -310,59 +328,142 @@ def main() -> None:
 
 
 def split_email_notebook() -> None:
-    """Split langfuse example_langgraph_agents.ipynb into graph + observability parts."""
+    """Split langfuse example_langgraph_agents.ipynb into graph + observability parts.
+
+    Source layout (43 cells):
+      0: NOTEBOOK_METADATA comment     1: "Step 0 Install" md    2: %pip install
+      3: "Step 1 env" md                4: Langfuse+OpenAI env     5: md
+      6: get_client                    7: "Step 2" md             8: chat graph test
+      9: CallbackHandler test         10: md traces
+     11: "Step 3" md                   12: imports  13: EmailState  14: nodes+LLM
+     15: add edges                    16: compile  17: example emails
+     18: run with Langfuse handler    19: "### Trace Structure" md
+     20+: "## Online Evaluation" ... offline evaluation ... end
+    """
     src = LF / "example_langgraph_agents.ipynb"
     nb = json.loads(src.read_text(encoding="utf-8"))
+    cells = nb["cells"]
 
-    # classify cells by marker text
-    def cell_text(c: dict) -> str:
-        return "".join(c["source"])
+    # normalize the LLM init in the graph cells to workshop env vars
+    import copy
 
-    graph_part, obs_part = [], []
-    stage = "front"
-    for cell in nb["cells"]:
-        t = cell_text(cell)
-        if "## Online Evaluation" in t or "## Step 3" in t and "Observe" in t:
-            stage = "obs"
-        if stage == "front":
-            graph_part.append(cell)
-        else:
-            obs_part.append(cell)
+    def envify_llm_cell(cell: dict) -> dict:
+        c = copy.deepcopy(cell)
+        if c.get("cell_type") != "code":
+            return c
+        c["source"] = [
+            line.replace(
+                'model = ChatOpenAI( model="gpt-4o",temperature=0)',
+                "model = make_llm()  # env-var driven: OPENAI_MODEL / OPENAI_API_KEY / OPENAI_API_BASE",
+            )
+            for line in c["source"]
+        ]
+        return c
 
-    # keep EmailState/classify/respond/run cells in graph part; eval cells in obs
-    def build_nb(cells: list[dict], title: str, level: str, dest_rel: str) -> Path:
+    graph_cells_env = [envify_llm_cell(c) for c in (cells[12], cells[13], cells[14], cells[15], cells[16], cells[17])]
+
+    # --- graph notebook: install md + pip cell + workshop env + graph cells ---
+    graph_nb_cells = [
+        cells[1],   # "## Step 0: Install the Required Libraries"
+        cells[2],   # %pip install ...
+        workshop_env_cell(),
+        make_llm_helper_cell(),
+        *graph_cells_env,
+        email_run_cell(),  # run the graph on both emails (no Langfuse)
+    ]
+
+    # --- observability notebook: full source flow ---
+    obs_cells = [c.copy() for c in cells]
+
+    def build_nb(cells_out: list[dict], dest_rel: str, level: str, title: str) -> Path:
         out = {
             "cells": [],
             "metadata": {
                 "kernelspec": {"display_name": "Python 3", "language": "python", "name": "python3"},
                 "language_info": {"name": "python", "version": "3.11"},
+                "langgraph_workshop": {"level": level},
             },
             "nbformat": 4,
             "nbformat_minor": 5,
         }
         dest = REPO / "notebooks" / dest_rel
         dest.parent.mkdir(parents=True, exist_ok=True)
-        out["cells"] = cells
+        # clear outputs
+        for c in cells_out:
+            if c.get("cell_type") == "code":
+                c["outputs"] = []
+                c["execution_count"] = None
+        # header cell
+        header = {
+            "cell_type": "markdown",
+            "metadata": {},
+            "source": nb_header_md(
+                dest_rel, level, title,
+                "langfuse/langfuse-docs",
+                "https://github.com/langfuse/langfuse-docs/blob/main/cookbook/example_langgraph_agents.ipynb",
+            ),
+        }
+        out["cells"] = [header] + cells_out
         dest.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
         return dest
 
     g = build_nb(
-        graph_part,
-        "Email Automation Agent — The Graph",
-        "3",
+        graph_nb_cells,
         "level-3-email-agent/30_email_agent_graph.ipynb",
+        "3",
+        "Email Automation Agent — The Graph",
     )
     o = build_nb(
-        obs_part,
-        "Email Automation Agent — Observability & Evaluation (Langfuse, optional)",
-        "3",
+        obs_cells,
         "level-3-email-agent/31_email_agent_observability.ipynb",
+        "3",
+        "Email Automation Agent — Observability & Evaluation (Langfuse, optional)",
     )
-    for dest, label in ((g, "graph"), (o, "observability")):
+    for dest, label in ((g, "graph part"), (o, "full source w/ evaluation")):
         rel = dest.relative_to(REPO).as_posix()
         PROVENANCE_ROWS.append(
-            f"| `{rel}` | notebook | `langfuse/langfuse-docs` | [example_langgraph_agents.ipynb](https://github.com/langfuse/langfuse-docs/blob/main/cookbook/example_langgraph_agents.ipynb) | split ({label} part), outputs cleared, header added |"
+            f"| `{rel}` | notebook | `langfuse/langfuse-docs` | [example_langgraph_agents.ipynb](https://github.com/langfuse/langfuse-docs/blob/main/cookbook/example_langgraph_agents.ipynb) | split ({label}), outputs cleared, workshop env cell added |"
         )
+
+
+def email_run_cell() -> dict:
+    """Run the compiled email graph on both sample emails (no Langfuse dependency)."""
+    return {
+        "cell_type": "code",
+        "metadata": {},
+        "execution_count": None,
+        "outputs": [],
+        "source": (
+            "# Run the email agent on both sample emails\n"
+            "print(\"\\nProcessing legitimate email...\")\n"
+            "legitimate_result = compiled_graph.invoke(\n"
+            "    input={\n"
+            "        \"email\": legitimate_email,\n"
+            "        \"is_spam\": None,\n"
+            "        \"spam_reason\": None,\n"
+            "        \"email_category\": None,\n"
+            "        \"draft_response\": None,\n"
+            "        \"messages\": [],\n"
+            "    },\n"
+            ")\n"
+            "print(\"\\nProcessing spam email...\")\n"
+            "spam_result = compiled_graph.invoke(\n"
+            "    input={\n"
+            "        \"email\": spam_email,\n"
+            "        \"is_spam\": None,\n"
+            "        \"spam_reason\": None,\n"
+            "        \"email_category\": None,\n"
+            "        \"draft_response\": None,\n"
+            "        \"messages\": [],\n"
+            "    },\n"
+            ")\n"
+            "print(\"\\n--- Legitimate email result ---\")\n"
+            "print(\"is_spam:\", legitimate_result[\"is_spam\"])\n"
+            "print(\"draft_response:\", legitimate_result.get(\"draft_response\", \"\")[:300])\n"
+            "print(\"\\n--- Spam email result ---\")\n"
+            "print(\"is_spam:\", spam_result[\"is_spam\"])\n"
+        ),
+    }
 
 
 if __name__ == "__main__":

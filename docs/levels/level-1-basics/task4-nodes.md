@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task4-nodes.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task4-nodes.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 4 - Nodes: Your Workflow Workers
 
 > **Goal:** Understand nodes as specialized workers - each a function that reads state, does one job, and returns updates.

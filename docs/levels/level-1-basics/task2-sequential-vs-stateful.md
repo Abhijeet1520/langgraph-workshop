@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task2-sequential-vs-stateful.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task2-sequential-vs-stateful.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 2 - Sequential vs Stateful: Why Graphs Matter
 
 > **Goal:** Experience the difference between a linear LangChain chain (no memory) and a LangGraph stateful graph (built-in memory).

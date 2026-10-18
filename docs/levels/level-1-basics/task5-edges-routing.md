@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task5-edges-routing.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task5-edges-routing.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 5 - Edges & Routing: Controlling Your Workflow 🛤️
 
 > **Goal:** Master the three kinds of edges - normal, conditional, and entry/exit - and use router functions to make your graph choose paths dynamically.

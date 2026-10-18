@@ -1,5 +1,3 @@
-> **Source:** migrated from [`docs/task3-stategraph.md`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/docs/task3-stategraph.md) (Abhijeet1520/LangGraph-Basics). See [PROVENANCE.md](../../PROVENANCE.md) for the full mapping.
-
 # Task 3 - StateGraph: The Heart of LangGraph
 
 > **Goal:** Learn how a `StateGraph` manages data that persists and accumulates across every node - like a shopping cart that remembers items as you add them.
