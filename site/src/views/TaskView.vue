@@ -3,13 +3,12 @@ import { computed, onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { useContent } from "@/composables/useContent";
 import { useProgressStore } from "@/stores/progress";
-import { useMarkdown } from "@/composables/useMarkdown";
+import { renderMarkdown } from "@/composables/useMarkdown";
 
 const props = defineProps<{ taskId: string }>();
 const router = useRouter();
 const { curriculum, loadCurriculum, loadDoc, findTask, allTasks } = useContent();
 const progress = useProgressStore();
-const { renderMarkdown } = useMarkdown();
 
 const html = ref("");
 const loading = ref(true);

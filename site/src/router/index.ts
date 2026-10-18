@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "./views/HomeView.vue";
-import TaskView from "./views/TaskView.vue";
-import SlidesView from "./views/SlidesView.vue";
-import SettingsView from "./views/SettingsView.vue";
+import HomeView from "@/views/HomeView.vue";
+import TaskView from "@/views/TaskView.vue";
+import SlidesView from "@/views/SlidesView.vue";
+import SettingsView from "@/views/SettingsView.vue";
 
 export const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

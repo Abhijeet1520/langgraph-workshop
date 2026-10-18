@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
 import { useContent } from "@/composables/useContent";
-import { useMarkdown } from "@/composables/useMarkdown";
+import { renderMarkdown } from "@/composables/useMarkdown";
 
 const { loadDoc } = useContent();
-const { renderMarkdown } = useMarkdown();
 const slides = ref<string[]>([]);
 const idx = ref(0);
 const loading = ref(true);
