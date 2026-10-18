@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🕸️ LangGraph Workshop</title>
+  <script>
+    // SPA fallback: GitHub Pages serves this for unknown paths.
+    // Redirect to index.html with the route restored as a hash-free query,
+    // so vue-router (history mode) picks it up after load.
+    (function () {
+      var pathSegmentsToKeep = 1; // "/langgraph-workshop/<rest>"
+      var l = window.location;
+      l.replace(
+        l.protocol + "//" + l.hostname +
+        l.pathname.split("/").slice(0, 1 + pathSegmentsToKeep).join("/") + "/?/" +
+        l.pathname.slice(1).split("/").slice(pathSegmentsToKeep).join("/").replace(/&/g, "~and~") +
+        (l.search ? "?" + l.search.slice(1).replace(/&/g, "~and~") : "") +
+        l.hash
+      );
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirecting to the workshop site…</p>
+</body>
+</html>
