@@ -91,7 +91,7 @@ streamlit run /root/code/task9/streamlit_app.py
 
 ## Streamlit Web Interface
 
-[task9/streamlit_app.py](../task9/streamlit_app.py) adds:
+[task9/streamlit_app.py](../../../demos/task9/streamlit_app.py) adds:
 
 - **Real-time visualization** - watch nodes execute live with progress tracking
 - **Interactive controls** - adjust max iterations and quality threshold

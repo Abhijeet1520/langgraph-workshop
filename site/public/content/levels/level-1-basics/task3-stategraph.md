@@ -33,7 +33,7 @@ mindmap
 
 ## The File
 
-[task3/stategraph_demo.py](../task3/stategraph_demo.py) builds a 3-node cart:
+[task3/stategraph_demo.py](../../../demos/task3/stategraph_demo.py) builds a 3-node cart:
 
 ```py
 class CartState(TypedDict):

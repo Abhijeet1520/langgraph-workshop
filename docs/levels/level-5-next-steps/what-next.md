@@ -36,18 +36,11 @@ State → nodes → conditional routing → loop-until-good. Every idea below is
 3. **Reuse the email-agent shape:** classify → route → draft → human review.
 4. **Keep the human-in-the-loop** until you've watched it be right 50 times.
 
-## Tools you now know how to reach
-
-- **LangGraph** — orchestration, loops, memory, human-in-the-loop
-- **Tools** (Level 2) — search, calculators, your own functions
-- **Memory/checkpointing** — multi-turn, resumable runs
-- **Observability** (Level 3 advanced) — Langfuse traces, evals, cost tracking
-
 ## Where to go next
 
 - [LangGraph docs](https://langchain-ai.github.io/langgraph/) — the framework reference
 - [Langfuse](https://langfuse.com) — tracing & evaluation for everything you build
-- This repo's [notebooks](../../notebooks/) — re-run any level anytime
+- This repo's [notebooks](../../../notebooks/) — re-run any level anytime
 - Build something boring, then automate it. Then come show us.
 
 ## Thank you 🙏

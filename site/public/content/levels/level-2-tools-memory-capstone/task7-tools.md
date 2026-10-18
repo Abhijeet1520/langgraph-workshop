@@ -40,7 +40,7 @@ def tool_node(state):
 
 ## The File
 
-[task7/tools_demo.py](../task7/tools_demo.py) chains four nodes:
+[task7/tools_demo.py](../../../demos/task7/tools_demo.py) chains four nodes:
 
 ```py
 workflow.add_node("enhance_query", enhance_query_node)  # LLM improves query

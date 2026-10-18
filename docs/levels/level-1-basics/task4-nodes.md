@@ -60,7 +60,7 @@ def router_node(state):
 
 ## The File
 
-[task4/nodes_demo.py](../task4/nodes_demo.py) wires four nodes into a text-analysis pipeline:
+[task4/nodes_demo.py](../../../demos/task4/nodes_demo.py) wires four nodes into a text-analysis pipeline:
 
 ```py
 workflow.add_node("input", input_node)        # validates text

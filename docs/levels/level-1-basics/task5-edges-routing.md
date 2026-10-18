@@ -82,7 +82,7 @@ def priority_router(state):
 
 ## The File
 
-[task5/edges_routing_demo.py](../task5/edges_routing_demo.py) builds an email processor:
+[task5/edges_routing_demo.py](../../../demos/task5/edges_routing_demo.py) builds an email processor:
 
 ```py
 def email_router(state) -> Literal["spam", "important", "normal"]:

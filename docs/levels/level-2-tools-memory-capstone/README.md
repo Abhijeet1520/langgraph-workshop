@@ -2,14 +2,6 @@
 
 > **Goal:** give agents superpowers — real tools (web search), persistent memory, and a full research assistant that combines everything.
 
-## The journey
-
-```mermaid
-flowchart LR
-    T7["7️⃣ Tools"] --> T8["8️⃣ Memory"]
-    T8 --> T9["9️⃣ Research<br/>Assistant 🤖"]
-```
-
 ## Docs (the teaching text)
 
 | Task | Concept | Doc |
@@ -22,10 +14,10 @@ flowchart LR
 
 | # | Notebook | Topic |
 |---|---|---|
-| 11 | [11_research_assistant.ipynb](../../notebooks/level-2-tools-memory-capstone/11_research_assistant.ipynb) | Research assistant capstone |
-| 12 | [12_memory.ipynb](../../notebooks/level-2-tools-memory-capstone/12_memory.ipynb) | Memory architectures |
-| 13 | [13_memory_profile_collection.ipynb](../../notebooks/level-2-tools-memory-capstone/13_memory_profile_collection.ipynb) | Memory: profiles & collections |
-| 14 | [14_chatbot_agent.ipynb](../../notebooks/level-2-tools-memory-capstone/14_chatbot_agent.ipynb) | Chatbot agent end-to-end |
+| 11 | [11_research_assistant.ipynb](../../../notebooks/level-2-tools-memory-capstone/11_research_assistant.ipynb) | Research assistant capstone |
+| 12 | [12_memory.ipynb](../../../notebooks/level-2-tools-memory-capstone/12_memory.ipynb) | Memory architectures |
+| 13 | [13_memory_profile_collection.ipynb](../../../notebooks/level-2-tools-memory-capstone/13_memory_profile_collection.ipynb) | Memory: profiles & collections |
+| 14 | [14_chatbot_agent.ipynb](../../../notebooks/level-2-tools-memory-capstone/14_chatbot_agent.ipynb) | Chatbot agent end-to-end |
 
 ## The capstone architecture
 

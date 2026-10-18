@@ -36,9 +36,9 @@ flowchart TD
 
 | File | What it shows |
 |---|---|
-| [sequential_chain.py](../task2/sequential_chain.py) | Two LLM calls in a row - step 2 can't see step 1's data |
-| [stateful_graph.py](../task2/stateful_graph.py) | Same flow as a graph - step 2 reads the name saved by step 1 |
-| [compare_approaches.py](../task2/compare_approaches.py) | Side-by-side comparison table |
+| [sequential_chain.py](../../../demos/task2/sequential_chain.py) | Two LLM calls in a row - step 2 can't see step 1's data |
+| [stateful_graph.py](../../../demos/task2/stateful_graph.py) | Same flow as a graph - step 2 reads the name saved by step 1 |
+| [compare_approaches.py](../../../demos/task2/compare_approaches.py) | Side-by-side comparison table |
 
 ## Run It
 

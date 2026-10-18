@@ -6,13 +6,13 @@
 
 | Way | Best for | Guide |
 |---|---|---|
-| **Google Colab** | zero install, workshop default | [docs/setup/colab.md](../../setup/colab.md) |
-| **Local** | your own machine, offline-ish | [docs/setup/local.md](../../setup/local.md) |
-| **Workshop site** | following along, keeping your config | [docs/setup/website.md](../../setup/website.md) |
+| **Google Colab** | zero install, workshop default | [colab.md](../../setup/colab.md) |
+| **Local** | your own machine | [local.md](../../setup/local.md) |
+| **Workshop site** | following along, keeping your config | [website.md](../../setup/website.md) |
 
 ## The notebook
 
-[00_welcome_and_verify.ipynb](../../notebooks/level-0-setup/00_welcome_and_verify.ipynb) — welcome, install, configure provider, verify.
+[00_welcome_and_verify.ipynb](../../../notebooks/level-0-setup/00_welcome_and_verify.ipynb) — welcome, install, configure provider, verify.
 
 ## The three env vars (everything hinges on these)
 

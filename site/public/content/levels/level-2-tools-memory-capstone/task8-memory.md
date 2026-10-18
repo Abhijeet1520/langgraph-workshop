@@ -58,7 +58,7 @@ return {"knowledge": state["knowledge"] + new_facts}
 
 ## The File
 
-[task8/memory_demo.py](../task8/memory_demo.py) runs a mini research pipeline:
+[task8/memory_demo.py](../../../demos/task8/memory_demo.py) runs a mini research pipeline:
 
 ```py
 workflow.add_node("questions", generate_questions_node)   # +3 questions

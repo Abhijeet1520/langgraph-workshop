@@ -65,7 +65,7 @@ if "need more info" in state["analysis"]:
 
 ## The File
 
-[task6/loops_demo.py](../task6/loops_demo.py) simulates a search that improves each iteration:
+[task6/loops_demo.py](../../../demos/task6/loops_demo.py) simulates a search that improves each iteration:
 
 ```py
 workflow.add_edge(START, "search")

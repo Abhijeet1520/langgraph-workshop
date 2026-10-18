@@ -258,6 +258,34 @@ def main() -> None:
         )
 
     # Level 3-5 docs are NEW content, not migrations.
+
+    # Demo scripts referenced by the task docs (LangGraph Basics task2..task9)
+    demos = [
+        ("task2/sequential_chain.py", "task2/stateful_graph.py", "task2/compare_approaches.py"),
+        ("task3/stategraph_demo.py",),
+        ("task4/nodes_demo.py",),
+        ("task5/edges_routing_demo.py",),
+        ("task6/loops_demo.py",),
+        ("task7/tools_demo.py",),
+        ("task8/memory_demo.py",),
+        ("task9/research_assistant.py", "task9/streamlit_app.py"),
+    ]
+    for group in demos:
+        for rel in group:
+            src = BASICS / rel
+            dest = REPO / "demos" / rel
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(src, dest)
+            PROVENANCE_ROWS.append(
+                f"| `demos/{rel}` | script | `Abhijeet1520/LangGraph-Basics` | [`{rel}`](https://github.com/Abhijeet1520/LangGraph-Basics/blob/main/{rel}) | verbatim |"
+            )
+
+    # Fix doc links: ../taskN/... demo refs -> ../../../demos/taskN/... (new location)
+    for md in (REPO / "docs" / "levels").rglob("*.md"):
+        text = md.read_text(encoding="utf-8")
+        new = text.replace("](../task", "](../../../demos/task")
+        if new != text:
+            md.write_text(new, encoding="utf-8")
     # ------------------------------------------------------------- notebooks
     # Level 1-2: langgraph-notebooks (snehotosh) — concept coverage order
     nb_map = [

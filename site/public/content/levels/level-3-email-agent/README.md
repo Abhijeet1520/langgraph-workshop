@@ -29,8 +29,8 @@ class EmailState(TypedDict):
 
 | Notebook | What it covers | Requires |
 |---|---|---|
-| [30_email_agent_graph.ipynb](../../notebooks/level-3-email-agent/30_email_agent_graph.ipynb) | The full graph: nodes, conditional routing, compile, run on two sample emails | Levels 1–2 |
-| [31_email_agent_observability.ipynb](../../notebooks/level-3-email-agent/31_email_agent_observability.ipynb) | **Optional advanced:** Langfuse tracing, online evaluation (costs, latency, LLM-as-judge), dataset evaluation | A free [Langfuse](https://langfuse.com) account |
+| [30_email_agent_graph.ipynb](../../../notebooks/level-3-email-agent/30_email_agent_graph.ipynb) | The full graph: nodes, conditional routing, compile, run on two sample emails | Levels 1–2 |
+| [31_email_agent_observability.ipynb](../../../notebooks/level-3-email-agent/31_email_agent_observability.ipynb) | **Optional advanced:** Langfuse tracing, online evaluation (costs, latency, LLM-as-judge), dataset evaluation | A free [Langfuse](https://langfuse.com) account |
 
 ## The two sample emails (for now)
 

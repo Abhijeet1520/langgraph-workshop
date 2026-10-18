@@ -16,7 +16,7 @@ flowchart LR
 
 ## The notebook
 
-[40_connect_your_inbox.ipynb](../../notebooks/level-4-real-inbox/40_connect_your_inbox.ipynb) — connect read-only, fetch a small batch, run the graph, review drafts on screen.
+[40_connect_your_inbox.ipynb](../../../notebooks/level-4-real-inbox/40_connect_your_inbox.ipynb) — connect read-only, fetch a small batch, run the graph, review drafts on screen.
 
 ## Setting up email access
 
@@ -30,7 +30,7 @@ flowchart LR
 
 ### Outlook / Office 365
 
-`IMAP_HOST="outlook.office365.com"` — app passwords work the same way (account security → app passwords). Some tenants disable them; use a personal account or Gmail for the workshop.
+`IMAP_HOST="outlook.office365.com"` — app passwords work the same way. Some tenants disable them; use a personal account or Gmail for the workshop.
 
 ### Any other provider
 
